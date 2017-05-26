@@ -19,7 +19,6 @@ from quickstart import views
 
 from django.contrib import admin
 
-
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
