@@ -15,7 +15,7 @@ from snippets.permissions import IsOwnerOrReadOnly
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
-
+from rest_framework import viewsets
 
 
 class SnippetList(generics.ListCreateAPIView):
@@ -33,12 +33,10 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
 	serializer_class = SnippetSerializer
 
 
-class UserList(generics.ListAPIView):
-	queryset = User.objects.all()
-	serializer_class = UserSerializer
-
-
-class UserDetail(generics.RetrieveAPIView):
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+	"""
+	This viewset automatically provides 'list' and 'detail' actions.
+	"""
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
 
